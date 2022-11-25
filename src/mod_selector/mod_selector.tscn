@@ -1,0 +1,94 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwpvw0ejd225h"]
+
+[ext_resource type="Theme" uid="uid://d0u607w56vdn5" path="res://assets/gui_theme/defult_theme.tres" id="2"]
+[ext_resource type="Script" path="res://src/mod_selector/mod_selector.gd" id="2_wnod0"]
+
+[sub_resource type="FontVariation" id="FontVariation_74n62"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3pbv8"]
+font = SubResource("FontVariation_74n62")
+font_size = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0n3wm"]
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.121569, 0.117647, 0.113725, 1)
+
+[node name="ModSelector" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("2_wnod0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 644.0
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
+offset_right = 1140.0
+offset_bottom = 39.0
+text = "MagicalTech Mod Creator "
+label_settings = SubResource("LabelSettings_3pbv8")
+
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/VBoxContainer"]
+offset_top = 43.0
+offset_right = 1140.0
+offset_bottom = 47.0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer"]
+offset_top = 51.0
+offset_right = 1140.0
+offset_bottom = 82.0
+text = "Create new mod"
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+offset_top = 86.0
+offset_right = 1140.0
+offset_bottom = 605.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_0n3wm")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1139.0
+offset_bottom = 518.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ModList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/PanelContainer/ScrollContainer"]
+unique_name_in_owner = true
+offset_right = 1138.0
+offset_bottom = 517.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PH" type="Control" parent="PanelContainer/VBoxContainer/PanelContainer/ScrollContainer/ModList"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1138.0
+
+[node name="LineEdit" type="LineEdit" parent="PanelContainer/VBoxContainer"]
+offset_top = 609.0
+offset_right = 1140.0
+offset_bottom = 640.0
+placeholder_text = "Search..."
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

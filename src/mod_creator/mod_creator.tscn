@@ -1,0 +1,194 @@
+[gd_scene load_steps=6 format=3 uid="uid://3l1v6moyqe3r"]
+
+[ext_resource type="Theme" uid="uid://d0u607w56vdn5" path="res://assets/gui_theme/defult_theme.tres" id="1_aim81"]
+
+[sub_resource type="GDScript" id="GDScript_4pngw"]
+script/source = "extends Control
+
+@onready var VersionEdit: LineEdit = $VBoxContainer/ModProperties/VersionE
+@onready var NameEdit: LineEdit = $VBoxContainer/ModProperties/NameE
+@onready var AuthorEdit: LineEdit = $VBoxContainer/ModProperties/AuthorE
+@onready var DescriptionE: TextEdit = $VBoxContainer/ModProperties/DescriptionE
+
+func _run():
+	EditorInterface.get_script_editor
+
+
+func _on_m_version_e_text_changed(new_text: String):
+	var regex := RegEx.new()
+	regex.compile(\"^(?:(0\\\\.|([1-9]+\\\\d*)\\\\.))+(?:(0\\\\.|([1-9]+\\\\d*)\\\\.))+((0|([1-9]+\\\\d*)))$\")
+	var result := regex.search(new_text)
+	if not result or not result.get_string() == new_text:
+		VersionEdit.modulate = Color(1, 0, 0)
+	else:
+		VersionEdit.modulate = Color(1, 1, 1)
+
+
+func _on_create_mod_btn_pressed():
+	$FileDialog.popup()
+
+
+func _on_file_dialog_file_selected(path):
+	print(path)
+	var mod := Mod.setup(
+		NameEdit.text,
+		VersionEdit.text,
+		AuthorEdit.text,
+		DescriptionE.text
+	)
+	ResourceSaver.save(mod, path)
+"
+
+[sub_resource type="FontVariation" id="FontVariation_04nkb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojyop"]
+font = SubResource("FontVariation_04nkb")
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxsxa"]
+
+[node name="ModCreator" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_aim81")
+script = SubResource("GDScript_4pngw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 644.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+offset_right = 1140.0
+offset_bottom = 56.0
+text = "Mod Creator"
+label_settings = SubResource("LabelSettings_ojyop")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 72.0
+offset_right = 1140.0
+offset_bottom = 76.0
+
+[node name="ModProperties" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 92.0
+offset_right = 1140.0
+offset_bottom = 557.0
+size_flags_vertical = 3
+columns = 2
+
+[node name="NameL" type="Label" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_right = 119.0
+offset_bottom = 34.0
+text = "Name: "
+label_settings = SubResource("LabelSettings_bxsxa")
+
+[node name="NameE" type="LineEdit" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_left = 123.0
+offset_right = 1140.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+placeholder_text = "MyMod"
+
+[node name="AuthorL" type="Label" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_top = 38.0
+offset_right = 119.0
+offset_bottom = 72.0
+text = "Author name: "
+label_settings = SubResource("LabelSettings_bxsxa")
+
+[node name="AuthorE" type="LineEdit" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_left = 123.0
+offset_top = 38.0
+offset_right = 1140.0
+offset_bottom = 72.0
+size_flags_horizontal = 3
+placeholder_text = "SlimyZockt"
+
+[node name="VersionL" type="Label" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_top = 76.0
+offset_right = 119.0
+offset_bottom = 110.0
+text = "Version: "
+label_settings = SubResource("LabelSettings_bxsxa")
+
+[node name="VersionE" type="LineEdit" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_left = 123.0
+offset_top = 76.0
+offset_right = 1140.0
+offset_bottom = 110.0
+size_flags_horizontal = 3
+text = "0.0.1"
+placeholder_text = "0.0.1"
+structured_text_bidi_override = 2
+
+[node name="DescriptionL" type="Label" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_top = 114.0
+offset_right = 119.0
+offset_bottom = 465.0
+size_flags_vertical = 3
+text = "Description: "
+label_settings = SubResource("LabelSettings_bxsxa")
+
+[node name="DescriptionE" type="TextEdit" parent="VBoxContainer/ModProperties"]
+layout_mode = 2
+offset_left = 123.0
+offset_top = 114.0
+offset_right = 1140.0
+offset_bottom = 465.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 573.0
+offset_right = 1140.0
+offset_bottom = 577.0
+
+[node name="CreateModBtn" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 593.0
+offset_right = 1140.0
+offset_bottom = 624.0
+text = "Create Mod"
+
+[node name="Spaceing" type="Control" parent="VBoxContainer"]
+layout_mode = 2
+anchors_preset = 0
+offset_top = 640.0
+offset_right = 1140.0
+offset_bottom = 640.0
+
+[node name="FileDialog" type="FileDialog" parent="."]
+position = Vector2i(0, 124)
+size = Vector2i(1142, 426)
+content_scale_mode = 2
+content_scale_aspect = 4
+theme = ExtResource("1_aim81")
+access = 2
+filters = PackedStringArray("*.tres")
+
+[connection signal="text_changed" from="VBoxContainer/ModProperties/VersionE" to="." method="_on_m_version_e_text_changed"]
+[connection signal="pressed" from="VBoxContainer/CreateModBtn" to="." method="_on_create_mod_btn_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]

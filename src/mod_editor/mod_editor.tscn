@@ -1,0 +1,223 @@
+[gd_scene load_steps=5 format=3 uid="uid://ba6cj3wqkul1f"]
+
+[ext_resource type="Theme" uid="uid://d0u607w56vdn5" path="res://assets/gui_theme/defult_theme.tres" id="2"]
+[ext_resource type="Script" path="res://src/mod_editor/mod_editor.gd" id="2_rjj1h"]
+[ext_resource type="PackedScene" uid="uid://blvmgbpeolr5f" path="res://src/mod_editor/item_row.tscn" id="3"]
+[ext_resource type="Script" path="res://src/GUIs/modding/mod_editor/Scene.gd" id="4"]
+
+[node name="ModEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("2_rjj1h")
+categorys = []
+categorys_types = []
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 1146.0
+offset_bottom = 644.0
+
+[node name="ItemDB" type="TabBar" parent="PanelContainer/TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 38.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/TabContainer/ItemDB"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PH2" type="Control" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1130.0
+
+[node name="LabelRow" type="HBoxContainer" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer"]
+offset_top = 4.0
+offset_right = 1130.0
+offset_bottom = 38.0
+
+[node name="Name" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_right = 151.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "name"
+horizontal_alignment = 1
+
+[node name="Recipe" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_left = 155.0
+offset_right = 307.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "recipe"
+horizontal_alignment = 1
+
+[node name="ItemType" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_left = 311.0
+offset_right = 463.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "item-type"
+horizontal_alignment = 1
+
+[node name="CraftingType" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_left = 467.0
+offset_right = 619.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "crafting-type"
+horizontal_alignment = 1
+
+[node name="MaxStackSize" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_left = 623.0
+offset_right = 775.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "max-stack-size"
+horizontal_alignment = 1
+
+[node name="IsConsumable" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_left = 779.0
+offset_right = 931.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "is-consumable"
+horizontal_alignment = 1
+
+[node name="IsConsumable2" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+offset_left = 935.0
+offset_right = 1087.0
+offset_bottom = 34.0
+size_flags_horizontal = 3
+text = "scene"
+horizontal_alignment = 1
+
+[node name="Spaceing" type="Label" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/LabelRow"]
+custom_minimum_size = Vector2(39.274, 0)
+offset_left = 1091.0
+offset_top = 1.0
+offset_right = 1130.0
+offset_bottom = 32.0
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer"]
+offset_top = 42.0
+offset_right = 1130.0
+offset_bottom = 562.0
+size_flags_vertical = 3
+
+[node name="ItemRow" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer/ScrollContainer" instance=ExtResource("3")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 461.0
+offset_bottom = 31.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="NewItemButton" type="Button" parent="PanelContainer/TabContainer/ItemDB/VBoxContainer"]
+offset_top = 566.0
+offset_right = 1130.0
+offset_bottom = 597.0
+text = "New Item"
+
+[node name="EnemyDB" type="TabBar" parent="PanelContainer/TabContainer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 27.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4")
+
+[node name="World" type="BaseButton" parent="PanelContainer/TabContainer"]
+_import_path = NodePath("")
+unique_name_in_owner = false
+process_mode = 0
+process_priority = 0
+editor_description = ""
+visible = false
+modulate = Color(1, 1, 1, 1)
+self_modulate = Color(1, 1, 1, 1)
+show_behind_parent = false
+top_level = false
+clip_children = 0
+light_mask = 1
+visibility_layer = 1
+texture_filter = 0
+texture_repeat = 0
+material = null
+use_parent_material = false
+clip_contents = false
+custom_minimum_size = Vector2(0, 0)
+layout_direction = 0
+layout_mode = 3
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 1
+grow_vertical = 1
+rotation = 0.0
+scale = Vector2(1, 1)
+pivot_offset = Vector2(0, 0)
+size_flags_horizontal = 1
+size_flags_vertical = 1
+size_flags_stretch_ratio = 1.0
+auto_translate = true
+tooltip_text = ""
+focus_neighbor_left = NodePath("")
+focus_neighbor_top = NodePath("")
+focus_neighbor_right = NodePath("")
+focus_neighbor_bottom = NodePath("")
+focus_next = NodePath("")
+focus_previous = NodePath("")
+focus_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = true
+mouse_default_cursor_shape = 0
+theme = null
+theme_type_variation = &""
+disabled = false
+toggle_mode = false
+shortcut_in_tooltip = true
+button_pressed = false
+action_mode = 1
+button_mask = 1
+keep_pressed_outside = false
+shortcut = null
+shortcut_feedback = true
+button_group = null
+script = null
+
+[connection signal="pressed" from="PanelContainer/TabContainer/ItemDB/VBoxContainer/NewItemButton" to="." method="_on_new_item_button_pressed"]

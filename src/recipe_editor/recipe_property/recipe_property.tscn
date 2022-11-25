@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://pj7k7xxmo2ad"]
+
+[ext_resource type="Script" path="res://src/recipe_editor/recipe_property/recipe_property.gd" id="1_afl5q"]
+
+[node name="RecipeProperty" type="HBoxContainer"]
+offset_right = 859.0
+offset_bottom = 28.0
+size_flags_vertical = 3
+script = ExtResource("1_afl5q")
+
+[node name="PropName" type="Label" parent="."]
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 28.0
+text = "property: "
+
+[node name="PropInput" type="LineEdit" parent="."]
+offset_left = 81.0
+offset_right = 859.0
+offset_bottom = 31.0
+size_flags_horizontal = 3

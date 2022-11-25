@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb1hoy5wvxsid"]
+
+[ext_resource type="Script" path="res://src/recipe_editor/recipe_editor.gd" id="1_gmlu4"]
+[ext_resource type="PackedScene" uid="uid://pj7k7xxmo2ad" path="res://src/recipe_editor/recipe_property/recipe_property.tscn" id="3_y38n1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3qx0n"]
+bg_color = Color(0.933333, 0.933333, 0.933333, 1)
+border_width_left = 1
+border_width_right = 1
+border_color = Color(0.403922, 0.403922, 0.403922, 1)
+corner_detail = 1
+
+[node name="RecipeEditor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gmlu4")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+offset_right = 175.0
+offset_bottom = 648.0
+
+[node name="MenuButton" type="MenuButton" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+offset_right = 175.0
+offset_bottom = 31.0
+text = "Select recipe schema"
+item_count = 1
+popup/item_0/text = "lel"
+popup/item_0/id = 0
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 35.0
+offset_right = 175.0
+offset_bottom = 66.0
+text = "Create recipe schema"
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 70.0
+offset_right = 175.0
+offset_bottom = 101.0
+text = "add ingriedient"
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 179.0
+offset_right = 183.0
+offset_bottom = 648.0
+theme_override_styles/separator = SubResource("StyleBoxFlat_3qx0n")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 187.0
+offset_right = 1152.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+
+[node name="Editor" type="VBoxContainer" parent="PanelContainer/HBoxContainer/ScrollContainer"]
+layout_mode = 2
+offset_right = 965.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Ingiedient" type="HBoxContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/Editor"]
+layout_mode = 2
+offset_right = 965.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="DelBtn" type="Button" parent="PanelContainer/HBoxContainer/ScrollContainer/Editor/Ingiedient"]
+layout_mode = 2
+offset_right = 32.0
+offset_bottom = 31.0
+text = "del"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer/ScrollContainer/Editor/Ingiedient"]
+layout_mode = 2
+offset_left = 36.0
+offset_right = 965.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="RecipeProperty" parent="PanelContainer/HBoxContainer/ScrollContainer/Editor/Ingiedient/VBoxContainer" instance=ExtResource("3_y38n1")]
+layout_mode = 2
+offset_right = 929.0
+offset_bottom = 31.0

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://c4kiyp50js0n7"]
+
+[node name="SchemaCreator" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2"]
+offset_right = 1152.0
+offset_bottom = 26.0
+
+[node name="Label" type="Label" parent="VBoxContainer2/HBoxContainer"]
+offset_right = 574.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Property Name"
+
+[node name="Type" type="Label" parent="VBoxContainer2/HBoxContainer"]
+offset_left = 578.0
+offset_right = 1152.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Type"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer2"]
+offset_top = 30.0
+offset_right = 1152.0
+offset_bottom = 601.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2/ScrollContainer"]
+offset_right = 1152.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer2/ScrollContainer/VBoxContainer"]
+offset_right = 1152.0
+offset_bottom = 31.0
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+offset_right = 556.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="Panel" type="Panel" parent="VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+offset_left = 560.0
+offset_right = 1116.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+
+[node name="LineEdit2" type="MenuButton" parent="VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer/Panel"]
+offset_left = 4.0
+offset_right = 558.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Type"
+item_count = 2
+popup/item_0/text = "Number"
+popup/item_0/id = 0
+popup/item_1/text = "Text"
+popup/item_1/id = 1
+
+[node name="Button" type="Button" parent="VBoxContainer2/ScrollContainer/VBoxContainer/HBoxContainer"]
+offset_left = 1120.0
+offset_right = 1152.0
+offset_bottom = 31.0
+text = "del"
+
+[node name="Control" type="Control" parent="VBoxContainer2"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 605.0
+offset_right = 1152.0
+offset_bottom = 605.0
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2"]
+offset_top = 609.0
+offset_right = 1152.0
+offset_bottom = 613.0
+
+[node name="Btns" type="HBoxContainer" parent="VBoxContainer2"]
+offset_top = 617.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CreatePropertyBtn" type="Button" parent="VBoxContainer2/Btns"]
+offset_right = 381.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Create Property"
+
+[node name="OKBtn" type="Button" parent="VBoxContainer2/Btns"]
+offset_left = 385.0
+offset_right = 766.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Ok"
+
+[node name="ColseBtn" type="Button" parent="VBoxContainer2/Btns"]
+offset_left = 770.0
+offset_right = 1152.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+text = "Close"

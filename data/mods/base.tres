@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://c7hbgtqlbfgc5"]
+
+[ext_resource type="Script" path="res://src/resources/mod.gd" id="1_kpm0d"]
+
+[resource]
+script = ExtResource("1_kpm0d")
+name = "baseMod"
+version = "0.0.0"
+author = "SlimyZockt"
+discription = "-"
+itemDB = null
+enemyDB = null
+map = null

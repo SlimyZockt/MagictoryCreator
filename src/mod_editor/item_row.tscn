@@ -1,0 +1,73 @@
+[gd_scene load_steps=2 format=3 uid="uid://blvmgbpeolr5f"]
+
+[ext_resource type="Script" path="res://src/mod_editor/item_row.gd" id="1_bt2ae"]
+
+[node name="ItemRow" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bt2ae")
+
+[node name="Name" type="LineEdit" parent="."]
+offset_right = 155.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+placeholder_text = "ItemName"
+alignment = 1
+editable = false
+
+[node name="RecipeCreator" type="Button" parent="."]
+offset_left = 159.0
+offset_right = 315.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+text = "edit recipe"
+
+[node name="ItemType" type="OptionButton" parent="."]
+offset_left = 319.0
+offset_right = 475.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+
+[node name="CraftingType" type="OptionButton" parent="."]
+offset_left = 479.0
+offset_right = 634.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+
+[node name="MaxStackSize" type="SpinBox" parent="."]
+offset_left = 638.0
+offset_right = 794.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = 798.0
+offset_right = 954.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+
+[node name="IsConsumable" type="CheckBox" parent="CenterContainer"]
+offset_left = 66.0
+offset_top = 312.0
+offset_right = 90.0
+offset_bottom = 336.0
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="."]
+offset_left = 958.0
+offset_right = 1113.0
+offset_bottom = 648.0
+size_flags_horizontal = 3
+text = "edit scene"
+
+[node name="DelButton" type="Button" parent="."]
+offset_left = 1117.0
+offset_right = 1151.0
+offset_bottom = 648.0
+text = "Del"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="DelButton" to="." method="_on_del_button_pressed"]
